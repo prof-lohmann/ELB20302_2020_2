@@ -1,1 +1,33 @@
+Faça um resumo em forma de tutorial sobre o como funciona o SPICE e responda:
+1. O que é o NETLIST?
+NETLIST é a forma que o LTSpice traduz o circuito desenhado para modo texto
+2. Como descrever o NETLIST de um circuito?
+O NETLIST é descrito por linhas, tendo como informação um unico componente por linha, seguido por seus nós e por ultimo seu valor.
+3. Como é representado cada um dos componentes? Explique com um exemplo.
+Para representar um resistor: R1(resistor 1) N001(Nó 1) 0(nó de referência) 10k(valor de R1)
+4. O que é o “LABEL” de um nó e qual a vantagem de usar o mesmo?
+LABEL é o nome que se dá para um nó específico. A vantagem é ter um controle na organização do circuito, pois possibilita o usuário a trabalhar com circuitos em diferentes lugares da tela mas compartilhando do mesmo nó sem precisar utilizar de fios além de ajudar na identificação de qual nó o usuário está trabalhando e facilitar no entendimento do circuito por gráficos e NETLIST.
+5. Quais os componentes básicos implementados no SPICE? (resistor, capacitor etc)
+Resistores, capacitores, indutores, diodos, fontes de tensão e corrente, transistores, MOSFETs, transformadores, etc.
+6. O que é um “SUBCKT”? Faça um exemplo.
+SUBCKT é um subcircuito, criado a partir de um circuito já existente que tem nome e é conectado no circuito principal, para poder utilizá-lo mais de uma vez no circuito ou em circuitos futuros. Um exemplo é uma parte de retificação de um sinal senoidal, que pode conter desde a parte da rede em CA até a retificação pelo capacitor do barramento em CC.
+7. Como incluir novos modelos de componentes em um simulador SPICE?
+Para incluir novos modelos é necessário do arquivo de NETLIST que contém o SUBCKT em file>open, selecionar a linha que há o SUBCKT e criar um símbolo para o mesmo.
 
+
+Faça um resumo em forma de tutorial sobre o como funciona os parâmetros de simulação
+do SPICE, respondendo:
+1. O que é simulação transiente (.trans)? Quando usar? Faça um exemplo.
+.trans é usado para observar o circuito em função do tempo, geralmente utilizado em circuitos com transitórios de carga. Por exemplo .tran 0 100m 0 10m
+2. O que é simulação “ DC operating point” (.op)? Quando usar? Faça um exemplo
+.op é utilizado para simulações em CC
+3. Quando usar .trans ou .op no SPICE?
+.trans para circuitos que dependem de carga e .op para circuitos somente em CC
+4. O que faz a diretiva “.step”? Forneça exemplos de utilização.
+.step é utilizada para variar algum componente do circuito em função do tempo, como por exemplo um potenciômetro. Por exemplo .step param r1 1k 10k 100(r1 variando de 1k a 10k, 100ohms por vez)
+5. O que faz a diretiva “.means”? Forneça exemplos de utilização.
+.meas é utilizado para  calcular certas condições do circuito como a média da tensão de saída
+6. O que é a simulação “DC sweep” (.dc)? Quando usar? Faça um exemplo.
+DC Sweep é para medir valores do circuito utilizando uma fonte por vez e tratando os capacitores como circuito aberto e indutores como curto-circuito
+7. Como simular um circuito em diferentes temperaturas de funcionamento?
+Com o comando .temp 0 10 15 20 (com 4 valores de temperatura, 0ºC, 10ºC, 15ºC e 20ºC
